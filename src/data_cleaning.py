@@ -9,13 +9,13 @@ from typing import Union
 class DataStratagy(ABC):
 
     @abstractmethod
-    def handel_data(self, df: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
+    def handle_data(self, df: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
         pass 
 
 
 class DataPreProcessStrategy(DataStratagy):
     
-    def handel_data(self, data: pd.DataFrame) -> pd.DataFrame:
+    def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
 
         try:
             data = data.drop(
@@ -70,10 +70,10 @@ class DataCleaning:
         self.data = data
         self.stratagy = stratagy
 
-    def handel_data(self) -> Union[pd.DataFrame, pd.Series]:
+    def handle_data(self) -> Union[pd.DataFrame, pd.Series]:
 
         try:
-            return self.stratagy.handel_data(self.data)
+            return self.stratagy.handle_data(self.data)
 
         except Exception as e:
             logging.error(f"Error cleaning data: {e}")
@@ -84,4 +84,4 @@ class DataCleaning:
 
 #     data = pd.read_csv("/home/sigmoid/Desktop/mlops/mlops-zenml-mlflow/data/olist_customers_dataset.csv")
 #     data_cleaning = DataCleaning(data, DataPreProcessStrategy())
-#     data_cleaning.handel_data() 
+#     data_cleaning.handle_data() 
