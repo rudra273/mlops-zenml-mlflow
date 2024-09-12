@@ -9,13 +9,13 @@ from typing import Union
 class DataStratagy(ABC):
 
     @abstractmethod
-    def handle_data(self, df: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
+    def handel_data(self, df: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
         pass 
 
 
 class DataPreProcessStrategy(DataStratagy):
     
-    def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
+    def handel_data(self, data: pd.DataFrame) -> pd.DataFrame:
 
         try:
             data = data.drop(
@@ -70,10 +70,10 @@ class DataCleaning:
         self.data = data
         self.stratagy = stratagy
 
-    def handle_data(self) -> Union[pd.DataFrame, pd.Series]:
+    def handel_data(self) -> Union[pd.DataFrame, pd.Series]:
 
         try:
-            return self.stratagy.handle_data(self.data)
+            return self.stratagy.handel_data(self.data)
 
         except Exception as e:
             logging.error(f"Error cleaning data: {e}")

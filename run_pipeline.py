@@ -5,6 +5,7 @@ if __name__ == "__main__":
 
     print(Client().active_stack.experiment_tracker.get_tracking_uri()) 
     train_pipeline("/home/sigmoid/Desktop/mlops/mlops-zenml-mlflow/data/olist_customers_dataset.csv") 
+    print(f"track experiment - \n mlflow ui --backend-store-uri {Client().active_stack.experiment_tracker.get_tracking_uri()}")
 
 
 
